@@ -1,0 +1,554 @@
+:root {
+  font-size: 100%;
+  --basic: #3f3d56;
+  --light: #F7E7CE;
+  --dark: #1E2640;
+  --inverted: #F5F5F5;
+  --error: #FF8B8B;
+}
+
+::selection {
+  background-color: var(--basic);
+  color: var(--inverted);
+}
+
+body {
+  color: var(--basic);
+  font-family: "Mukta", sans-serif;
+  user-select: none;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+  background-color: #fefeff;
+}
+
+a {
+  color: var(--basic);
+}
+
+article {
+  padding: 5em 2.5em;
+  margin-left: 20em;
+  margin-right: 5em;
+  max-width: 55em;
+  position: relative;
+}
+
+output {
+  position: relative;
+  display: block;
+  margin: 2em 0;
+}
+
+output h5 {
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  font-size: smaller;
+  color: #999;
+}
+
+div.logo {
+  font-family: "Playfair Display", serif;
+  font-size: xx-large;
+  color: var(--basic);
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/********************************* bookmark ***********************************/
+
+aside.bookmark {
+  background-color: #fff;
+  border-right: 0.1em solid #f1f1f9;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 20em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+aside.bookmark ol {
+  margin: 4vh 0 12vh 5em;
+  padding: 0;
+}
+
+aside.bookmark ol li {
+  padding: .25em;
+  margin: 0;
+  color: #7a7a7a;
+}
+
+aside.bookmark li span {
+  cursor: pointer;
+}
+
+aside.bookmark ol li[data-active="true"] {
+  color: var(--basic);
+}
+
+aside.bookmark ol li[data-active="true"] span {
+  font-weight: 700;
+}
+
+/********************************** article ***********************************/
+
+article h1 {
+  margin: 0 0 1em 0;
+  padding: 1.2em 0 1em 0;
+  font-weight: 400;
+  font-size: xxx-large;
+  line-height: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+article pre,
+article p,
+article b {
+  padding: 1em 0;
+  margin: 0;
+  border: 1px solid #fff;
+  text-align: justify;
+  font-size: large;
+}
+
+article b {
+  display: block;
+  background-color: var(--light);
+  border-radius: .33em;
+  padding: 1.5em;
+  margin: 1em 0;
+  font-weight: 100;
+}
+
+article pre[contenteditable] {
+  border-radius: .33em;
+  border: 0;
+  font-size: large;
+  font-family: 'Roboto Mono', monospace;
+  line-height: 2;
+  padding: 1em;
+  margin: 1em 0;
+  width: calc(100% - 2em);
+}
+
+article p[contenteditable="true"],
+article pre[contenteditable="true"] {
+  cursor: text;
+  outline: none;
+  overflow: hidden;
+}
+
+article pre[data-calc]::after {
+  content: " = " attr(data-calc);
+  color: #afafaf;
+}
+
+article pre[contenteditable]:focus {
+  background-color: var(--inverted);
+}
+
+/********************************** toolbar ***********************************/
+
+aside.toolbar {
+  position: fixed;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  width: 5em;
+}
+
+aside.toolbar div.debug,
+aside.toolbar div.edit {
+  width: 3.5em;
+  height: 3.5em;
+  background-color: var(--basic);
+  border-radius: .33em;
+  position: absolute;
+  right: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+aside.toolbar div.debug {
+  bottom: 6em;
+  background-color: var(--error);
+}
+
+aside.toolbar div.edit {
+  bottom: 1.5em;
+}
+
+aside.toolbar div>span {
+  font-size: 2em;
+  text-align: center;
+  color: var(--inverted);
+}
+
+aside.toolbar ul {
+  background: var(--basic);
+  position: absolute;
+  bottom: 4em;
+  right: 2em;
+  color: #fff;
+  border-radius: 0.33em;
+  padding: 1.2em 1em;
+  margin: 0;
+  width: 16em;
+}
+
+aside.toolbar ul li {
+  display: inline-flex;
+  width: 4.5em;
+  height: 4.5em;
+  margin: .166em .33em;
+  border-radius: .33em;
+  border: 0.1em solid var(--dark);
+  background-color: #4e4c67;
+  cursor: pointer;
+  vertical-align: top;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  color: var(--inverted);
+}
+
+aside.toolbar ul li:hover {
+  background-color: #686686;
+}
+
+aside.toolbar ul li>span {
+  color: #686686;
+  font-size: xx-large;
+}
+
+aside.toolbar ul li:hover>span {
+  color: #fff;
+}
+
+aside.toolbar ul+div {
+  border: .15em solid #fefeff;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+/******************************* ui caption **********************************/
+
+article div.caption {
+  text-align: center;
+  color: #afafaf;
+  line-height: 2;
+  padding: 0 0 1em 0;
+  margin: 0 0 1em 0;
+}
+
+article div.caption var {
+  font-style: normal;
+  cursor: pointer;
+}
+
+article div.caption span {
+  color: var(--basic);
+}
+
+article div.caption span[data-ref="true"]::before {
+  color: #afafaf;
+  content: "—";
+  margin-left: .33em;
+  padding-right: .33em;
+}
+
+/********************************* ui model ***********************************/
+
+div.model {
+  background-color: var(--basic);
+  border-radius: .33em;
+  height: 8em;
+  padding: 2em;
+  color: #fff;
+}
+
+/************************** ui relationship table ****************************/
+
+table.relationship td {
+  padding: 1em;
+  font-size: large;
+  text-align: center;
+  font-family: 'Roboto Mono';
+}
+
+table.relationship td[contenteditable] {
+  outline: none;
+  color: var(--basic);
+  cursor: text;
+}
+
+table.relationship tr:nth-child(2) td {
+  border-top: 0.1em solid #dedede;
+}
+
+/********************************* ui table **********************************/
+
+output table {
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+output table thead th {
+  background-color: var(--inverted);
+  border: 0.1em solid #dedede;
+  padding: 0.5em;
+  text-align: center;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 2;
+  cursor: pointer;
+  position: sticky;
+  z-index: 1;
+  top: -0.05em;
+}
+
+output table thead th::after {
+  content: "";
+  display: block;
+  border-bottom: 0.1em solid #dedede;
+  width: 100%;
+  position: absolute;
+  bottom: -0.1em;
+  right: 0;
+  left: 0;
+}
+
+output table thead th>span {
+  color: #afafaf;
+  margin-left: 0.33em;
+  vertical-align: middle;
+}
+
+output table tbody tr td {
+  border: 0.1em solid #dedede;
+  margin: 0;
+  padding: 0.5em;
+  text-align: center;
+  position: relative;
+  font-family: 'Roboto Mono', monospace;
+}
+
+output table tbody tr:hover td {
+  background-color: var(--inverted);
+}
+
+output table tbody tr:not(.more):hover td:last-child::before {
+  content: "#" attr(data-row-index);
+  display: block;
+  position: absolute;
+  left: calc(100% + .5em);
+  color: #afafaf;
+}
+
+output table tbody tr:not(.more) td:hover::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #afafaf;
+}
+
+output table tbody tr td span {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+output table tbody tr.more td {
+  background-color: var(--inverted);
+  font-size: xx-small;
+  cursor: pointer;
+}
+
+output div.table.preferences {
+  position: sticky;
+  top: 2em;
+}
+
+output div.table.preferences aside {
+  position: absolute;
+  left: calc(100% + 2em);
+  top: 0.75em;
+  width: 8em;
+  color: #7a7a7a;
+}
+
+output div.table.preferences section {
+  width: max-content;
+  margin-bottom: 1.5em;
+}
+
+output div.table.preferences span {
+  margin: 0 0.33em 0 0;
+  padding: 0.33em;
+  border-radius: 0.25em;
+  border: 1px solid #e0e0e0;
+  font-size: 1.1em;
+  color: #7a7a7a;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
+
+output div.table.preferences section:first-child span {
+  font-family: 'Roboto Mono';
+  width: 1em;
+  line-height: 1;
+}
+
+output div.table.preferences span:hover,
+output div.table.preferences span[data-active="true"] {
+  color: var(--basic);
+  border-color: var(--basic);
+}
+
+/******************************** ui diagram **********************************/
+
+output div.diagram.preferences {
+  position: absolute;
+  left: calc(100% + 2em);
+  top: 0;
+}
+
+output div.diagram.preferences em {
+  margin: 0 0.83em 0 .5em;
+  color: #7a7a7a;
+  font-size: smaller;
+}
+
+output div.diagram.preferences hr {
+  border: .1em solid #eee;
+}
+
+output div.diagram.preferences div.chart {
+  width: max-content;
+  margin-bottom: 1.5em;
+}
+
+output div.diagram.preferences div.chart h5 {
+  text-align: left;
+}
+
+output div.diagram.preferences div.chart.y-axis {
+  text-align: center;
+}
+
+output div.diagram.preferences span {
+  margin: 0 0.33em 0 0;
+  padding: 0.33em;
+  border-radius: 0.25em;
+  border: 1px solid #e0e0e0;
+  font-size: 1.1em;
+  color: #7a7a7a;
+  cursor: pointer;
+  display: inline-block;
+}
+
+output div.diagram.preferences .x-axis>span,
+output div.diagram.preferences .y-axis>span {
+  font-family: 'Roboto Mono';
+  width: 1em;
+  line-height: 1;
+  text-align: center;
+}
+
+output div.diagram.preferences span:hover,
+output div.diagram.preferences span.active,
+output div.diagram.preferences span[data-active="true"] {
+  color: var(--basic);
+  border-color: var(--basic);
+}
+
+output div.diagram.preferences input[type="number"] {
+  width: 3em;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  font-family: 'Roboto Mono';
+}
+
+/********************************** start *************************************/
+
+div.start {
+  margin: 1.5em;
+  padding: 0;
+}
+
+div.start b {
+  font-size: large;
+  font-weight: 400;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0;
+  margin-right: 1em;
+}
+
+div.start b[data-active="true"] {
+  border-bottom: .25em solid var(--light);
+}
+
+div.start footer {
+  position: fixed;
+  bottom: 1.5em;
+  left: 1.5em;
+  color: #919191;
+}
+
+div.start footer i {
+  margin-right: .5em;
+}
+
+div.start footer a {
+  color: #919191;
+  text-decoration: none;
+  margin-right: 1.5em;
+}
+
+div.start footer a:hover {
+  text-decoration: underline;
+}
+
+aside.toolbar label[for="upload"] {
+  width: 3.5em;
+  height: 3.5em;
+  background-color: var(--inverted);
+  border-radius: .33em;
+  position: absolute;
+  bottom: 1.5em;
+  right: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+aside.toolbar label[for="upload"]>span {
+  color: #919191;
+  text-align: center;
+}
+
+aside.toolbar label[for="upload"]+input {
+  display: none;
+}
